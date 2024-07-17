@@ -69,7 +69,7 @@ export async function doAttendanceForAccount(token: string, options: Options) {
   addMessage('## 明日方舟签到')
   let successAttendance = 0
   const characterList = list.map(i => i.bindingList).flat()
-  console.log(characterList);
+  console.log(characterList)
   await Promise.all(characterList.map(async (character) => {
     const data = await attendance(cred, signToken, {
       uid: character.uid,
