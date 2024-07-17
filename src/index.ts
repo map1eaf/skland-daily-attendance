@@ -74,7 +74,6 @@ export async function doAttendanceForAccount(token: string, options: Options) {
       uid: character.uid,
       gameId: character.channelMasterId,
     })
-    console.log(character.uid)
     console.log(`将签到第${successAttendance + 1}个角色`)
     if (data.code === 0 && data.message === 'OK') {
       const msg = `${(Number(character.channelMasterId) - 1) ? 'B 服' : '官服'}角色 ${getPrivacyName(character.nickName)} 签到成功${`, 获得了${data.data.awards.map(a => `「${a.resource.name}」${a.count}个`).join(',')}`}`
