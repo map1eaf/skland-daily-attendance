@@ -69,12 +69,12 @@ export async function doAttendanceForAccount(token: string, options: Options) {
   addMessage('## 明日方舟签到')
   let successAttendance = 0
   const characterList = list.map(i => i.bindingList).flat()
-  console.log(characterList)
   await Promise.all(characterList.map(async (character) => {
     const data = await attendance(cred, signToken, {
       uid: character.uid,
       gameId: character.channelMasterId,
     })
+    console.log(character.uid)
     console.log(`将签到第${successAttendance + 1}个角色`)
     if (data.code === 0 && data.message === 'OK') {
       const msg = `${(Number(character.channelMasterId) - 1) ? 'B 服' : '官服'}角色 ${getPrivacyName(character.nickName)} 签到成功${`, 获得了${data.data.awards.map(a => `「${a.resource.name}」${a.count}个`).join(',')}`}`
